@@ -15,7 +15,7 @@ spec:
         app: nodeapptest
     spec:
       containers:
-      - image: simhalp9/dockerwebtest:13
+      - image: alluriram9/tekton-node-app:latest
         name: nodeapptest
 
 
