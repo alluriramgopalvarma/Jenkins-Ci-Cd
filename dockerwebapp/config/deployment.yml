@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodeapptest
+  name: nodeapptest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapptest
+  template:
+    metadata:
+      labels:
+        app: nodeapptest
+    spec:
+      containers:
+      - image: alluriram9/tekton-node-app:latest
+        name: nodeapptest
+
+
+
+---
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodeapptest
+  name: nodeapptest
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 31235
+  selector:
+    app: nodeapptest
