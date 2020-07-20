@@ -17,4 +17,25 @@ spec:
       containers:
       - image: simhalp9/dockerwebtest:13
         name: nodeapptest
-        
+
+
+
+------
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodeapptest
+  name: nodeapptest
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 31235
+  selector:
+    app: nodeapptest
